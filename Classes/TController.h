@@ -45,6 +45,8 @@ private:
     void cancelAutoMoveDown();
     void scheduleAutoMoveDown();
 
+    static TPiece* createRandomPiece();
+
     static const float AUTO_DROP_DOWN_INTERVAL;
 };
 

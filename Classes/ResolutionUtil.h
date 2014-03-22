@@ -38,7 +38,7 @@ private:
 	static const int BOTTOM_PADDING = 520;
 
 	static const int LEFT_BUTTON_X = 150;
-	static const int LEFT_BUTTON_Y = BOTTOM_PADDING - 80;
+	static const int LEFT_BUTTON_Y = BOTTOM_PADDING - 120;
 	static const int RIGHT_BUTTON_X = 350;
 	static const int RIGHT_BUTTON_Y = LEFT_BUTTON_Y;
 	static const int DOWN_BUTTON_X = 250;
@@ -47,7 +47,7 @@ private:
 	static const int ROTATE_BUTTON_Y = LEFT_BUTTON_Y;
 	static const int DROP_BUTTON_X = ROTATE_BUTTON_X;
 	static const int DROP_BUTTON_Y = DOWN_BUTTON_Y;
-	static const int START_BUTTON_X = LEFT_PADDING + FIELD_WIDTH + 80;
+	static const int START_BUTTON_X = ROTATE_BUTTON_X;
 	static const int START_BUTTON_Y = SCREEN_HEIGHT - 150;
 
 	static const int BLOCK_SIDE_LEN = 50;

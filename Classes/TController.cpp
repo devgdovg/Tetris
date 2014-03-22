@@ -9,6 +9,8 @@
 #include "ResolutionUtil.h"
 #include <string>
 #include <android/log.h>
+#include <cstdlib>
+#include <ctime>
 
 using namespace tetris;
 using namespace cocos2d;
@@ -22,7 +24,7 @@ void TController::onStartButton(CCObject* sender, CCControlEvent event) {
 		delete currentPiece;
 	}
 	__android_log_write(ANDROID_LOG_INFO, "Tcontroller", "creating currentPiece...");
-	currentPiece = TPiece::createI();
+	currentPiece = createRandomPiece();
 	if (nextPiece) {
 		delete nextPiece;
 	}
@@ -104,8 +106,28 @@ void TController::scheduleAutoMoveDown() {
 	this->schedule(schedule_selector(TController::onTimeout), AUTO_DROP_DOWN_INTERVAL);
 }
 
+TPiece* TController::createRandomPiece() {
+	int r = rand() % 7;
+	switch (r) {
+	case 0:
+		return TPiece::createI();
+	case 1:
+		return TPiece::createJ();
+	case 2:
+		return TPiece::createL();
+	case 3:
+		return TPiece::createO();
+	case 4:
+		return TPiece::createS();
+	case 5:
+		return TPiece::createT();
+	case 6:
+		return TPiece::createZ();
+	}
+}
+
 bool TController::newPiece() {
-	TPiece* p = TPiece::createI();
+	TPiece* p = createRandomPiece();
 	currentPiece = nextPiece;
 	nextPiece = p;
 	TPosition pos[4];
@@ -163,6 +185,7 @@ bool TController::init() {
 	if (!CCLayer::init()) {
 		return false;
 	}
+	srand(time(NULL));
 	ResolutionUtil::init();
 
 	std::string left("left");
